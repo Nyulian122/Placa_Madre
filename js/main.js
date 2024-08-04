@@ -13,14 +13,22 @@ document.addEventListener("DOMContentLoaded", () => {
     spans.forEach(span => {
         span.addEventListener("click", () => {
             const modal = document.getElementById(span.getAttribute("data-modal"));
-            modal.style.display = "none";
+            modal.classList.add('closing');
+            setTimeout(() => {
+                modal.style.display = "none";
+                modal.classList.remove('closing');
+            }, 500);
         });
     });
 
     window.addEventListener("click", (event) => {
         modals.forEach(modal => {
             if (event.target == modal) {
-                modal.style.display = "none";
+                modal.classList.add('closing');
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    modal.classList.remove('closing');
+                }, 500);
             }
         });
     });
